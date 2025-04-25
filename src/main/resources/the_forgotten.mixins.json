@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "dev.pages.creeperbabytea.the_forgotten.api.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "mixins": [
+        "EntityMixin",
+        "PlayerMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

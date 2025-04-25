@@ -1,0 +1,12 @@
+{
+  "entry": "minecraft:netherite_hoe",
+  "info": {
+    "disabled_slots": [
+      "left",
+      "right",
+      "shift_left",
+      "shift_right"
+    ],
+    "rescaling": 255.0
+  }
+}

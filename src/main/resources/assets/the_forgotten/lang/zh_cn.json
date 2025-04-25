@@ -1,0 +1,11 @@
+{
+    "item.info.offhand_enabled": "允许副手使用",
+    "item.info.offhand_disabled": "禁止副手使用",
+    "item.info.rescaling": "重整倍率: {}",
+    "item.info.slots_disabled": "禁用槽位",
+
+    "item.ability.info.mana_cost": "魔力消耗",
+
+    "chat.ability.no_mana": "魔力值不足!",
+    "chat.ability.on_cool_down": "技能冷却中!"
+}

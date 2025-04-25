@@ -1,28 +1,26 @@
 package dev.pages.creeperbabytea.the_forgotten.api.common.data;
 
-import dev.pages.creeperbabytea.the_forgotten.TheForgotten;
+import dev.pages.creeperbabytea.common.register.EntryInfo;
+import dev.pages.creeperbabytea.the_forgotten.Registrations;
+import dev.pages.creeperbabytea.the_forgotten.api.common.item.ModifiableItemInfo;
+import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.item.Item;
 
-public class ModifiableItemDefinitionReader {
-    public static final String FOLDER_PATH = "data/items/modifiable";
-    public static final ResourceLocation FOLDER_LOCATION = TheForgotten.modLoc(FOLDER_PATH);
+import java.util.Map;
 
-    public static void onServerStart(ServerStartedEvent event) {
-        /*IResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
-        List<JsonObject> itemJsons = DataReader.readAllJson(resourceManager, FOLDER_LOCATION);
-        itemJsons.forEach(json -> {
-            ResourceLocation itemName = new ResourceLocation(json.get("item").getAsString());
-            Item item = ForgeRegistries.ITEMS.getValue(itemName);
-            if (item != null) {
-                JsonObject dataTag = json.getAsJsonObject("modifiable");
-                ModifiableItemState state = new ModifiableItemState(item);
-                Registrations.ITEMS.putState(item, state);
-                if (dataTag.has("offhand") && dataTag.get("offhand").getAsBoolean())
-                    state.setAllowedOffhand(true);
+public class ModifiableItemDefinitionReader extends SimpleJsonResourceReloadListener<EntryInfo.BuiltInEntryInfo<Item>> {
+    public static final String FOLDER_PATH = "tea/item/modifiable";
 
+    public ModifiableItemDefinitionReader() {
+        super(ModifiableItemInfo.CODEC, FileToIdConverter.json(FOLDER_PATH));
+    }
 
-            }
-        });*/   //TODO
+    @Override
+    protected void apply(Map<ResourceLocation, EntryInfo.BuiltInEntryInfo<Item>> object, ResourceManager resourceManager, ProfilerFiller profiler) {
+        object.values().forEach(Registrations.ITEMS::putInfo);
     }
 }
